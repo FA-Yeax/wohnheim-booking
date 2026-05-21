@@ -6,7 +6,8 @@ app.use(express.urlencoded({ extended: false }));
 const db = require('./database');
 
 app.get('/', (req, res) => {
-    const reservations = db.prepare('SELECT * FROM reservations').all();
+    db.prepare("DELETE FROM reservations WHERE start_date < date('now')").run();
+    const reservations = db.prepare('SELECT * FROM reservations ORDER BY start_date ASC, start_time ASC').all();
     const error = req.query.error;
     res.render('index', { reservations, error });
 });
