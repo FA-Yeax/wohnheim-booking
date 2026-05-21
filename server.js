@@ -38,7 +38,7 @@ app.post('/reservations', (req, res) => {
     `).get(room, date, end_time, start_time);
 
     if (conflict) {
-        return res.redirect('/?error=' + encodeURIComponent('Konflikt! Dieser Raum ist bereits reserviert.'));
+        return res.redirect('/?error=' + encodeURIComponent('Conflict! This room is already booked for that time.'));
     }
     
     db.prepare(`

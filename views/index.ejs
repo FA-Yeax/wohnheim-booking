@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wohnheim Buchung</title>
+    <title>Dorm Room Booking</title>
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -262,46 +262,46 @@
 <body>
 
 <header>
-    <h1>🏠 Wohnheim Buchung</h1>
-    <p>Gemeinschaftsräume reservieren &amp; verwalten</p>
+    <h1>🏠 Dorm Room Booking</h1>
+    <p>Reserve and manage shared spaces</p>
 </header>
 
 <div class="container">
 
     <div class="card">
-        <h2 class="card-title">✏️ Neue Reservierung</h2>
+        <h2 class="card-title">✏️ New Reservation</h2>
         <form action="/reservations" method="POST">
 
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Dein Name" required>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
             </div>
 
             <div class="form-group">
-                <label for="room">Raum</label>
+                <label for="room">Room</label>
                 <select id="room" name="room">
                     <option value="common_room">🛋️ Common Room</option>
-                    <option value="grillbereich">🔥 Grillbereich</option>
+                    <option value="grillbereich">🔥 Grill Area</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="date">Datum</label>
+                <label for="date">Date</label>
                 <input type="date" id="date" name="date" required>
             </div>
 
             <div class="time-row">
                 <div class="form-group">
-                    <label for="start_time">Von</label>
+                    <label for="start_time">From</label>
                     <input type="time" id="start_time" name="start_time" required>
                 </div>
                 <div class="form-group">
-                    <label for="end_time">Bis</label>
+                    <label for="end_time">Until</label>
                     <input type="time" id="end_time" name="end_time" required>
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn">Jetzt reservieren</button>
+            <button type="submit" class="submit-btn">Book now</button>
         </form>
 
         <% if (typeof error !== 'undefined') { %>
@@ -314,7 +314,7 @@
 
     <div class="card">
         <h2 class="card-title">
-            📅 Aktuelle Reservierungen
+            📅 Current Reservations
             <% if (reservations.length > 0) { %>
             <span class="res-count"><%= reservations.length %></span>
             <% } %>
@@ -323,13 +323,13 @@
         <% if (reservations.length === 0) { %>
         <div class="empty-state">
             <div class="empty-icon">📭</div>
-            <p>Noch keine Reservierungen vorhanden.</p>
+            <p>No reservations yet.</p>
         </div>
         <% } else { %>
         <div class="reservations-list">
             <% reservations.forEach(r => {
                 const isGrill = r.room === 'grillbereich';
-                const roomLabel = isGrill ? 'Grillbereich' : 'Common Room';
+                const roomLabel = isGrill ? 'Grill Area' : 'Common Room';
                 const parts = r.start_date ? r.start_date.split('-') : ['?','?','?'];
                 const dateStr = parts.length === 3 ? parts[2] + '.' + parts[1] + '.' + parts[0] : r.start_date;
             %>
@@ -346,7 +346,7 @@
                 </div>
                 <form class="delete-form" action="/reservations/delete" method="POST">
                     <input type="hidden" name="id" value="<%= r.id %>">
-                    <button type="submit" class="delete-btn" title="Löschen">🗑️</button>
+                    <button type="submit" class="delete-btn" title="Delete">🗑️</button>
                 </form>
             </div>
             <% }) %>
