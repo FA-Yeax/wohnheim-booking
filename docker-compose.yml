@@ -1,0 +1,11 @@
+services:
+  booking:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - booking-data:/data
+    ports:
+      - "127.0.0.1:3000:3000"
+
+volumes:
+  booking-data:

@@ -1,5 +1,6 @@
 const Database = require('better-sqlite3');
-const db = new Database('wohnheim.db');
+const path = require('path');
+const db = new Database(process.env.DB_PATH || path.join(__dirname, 'wohnheim.db'));
 
 db.exec(`
     CREATE TABLE IF NOT EXISTS reservations (
