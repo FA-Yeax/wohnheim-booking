@@ -1,2 +1,25 @@
+# Dependencies
 node_modules/
-wohnheim.db
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Databases
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

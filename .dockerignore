@@ -1,3 +1,13 @@
+.env
+.env.*
+!.env.example
 node_modules
-wohnheim.db
 .git
+.gitignore
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.log
